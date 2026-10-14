@@ -8,10 +8,13 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
-  <script defer src="script.js?v=4"></script>
+  <link rel="stylesheet" href="styles.css?v=5.1">
+  <link rel="stylesheet" href="mobile.css?v=5.1">
+  <script defer src="script.js?v=5.1"></script>
+  <script defer src="mobile.js?v=5.1"></script>
 </head>
 <body>
+<div class="mobile-scroll-indicator" aria-hidden="true"><span></span></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 <div id="progress-bar" aria-hidden="true"></div>
 <div class="announcement"><span class="announcement-dot"></span> PROGRESO REAL. SIN ATAJOS. <span class="announcement-extra">/ BUILT NATURALLY.</span></div>
@@ -46,4 +49,10 @@
 <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Carrito de demostración" aria-hidden="true"><div class="drawer-header"><div><span class="eyebrow">NATIVO / DEMOSTRACIÓN</span><h2>TU CARRITO.</h2></div><button class="close-drawer" aria-label="Cerrar carrito">✕</button></div><div id="cart-items" class="cart-items"></div><div class="drawer-bottom"><p>Precios y ventas aún no disponibles. El carrito es solo una demostración.</p><button id="cart-request" class="btn btn-dark">ME INTERESA EL LANZAMIENTO ↗</button></div></aside>
 <div id="info-modal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-title" aria-hidden="true"><button class="info-close" aria-label="Cerrar ventana">✕</button><span id="info-kicker" class="eyebrow"></span><h2 id="info-title"></h2><div id="info-content"></div><a href="#comunidad" id="info-action" class="btn btn-dark">UNIRME A LA COMUNIDAD ↗</a></div>
 <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar contenido" aria-hidden="true"><button id="search-close" aria-label="Cerrar búsqueda">✕</button><label for="site-search">¿QUÉ QUIERES APRENDER?</label><input id="site-search" type="search" placeholder="Creatina, fuerza, nutrición..."><div id="search-results"></div></div>
-<div class="transition-curtain" aria-hidden="true"><span>NATIVO.</span></div><div class="toast" role="status" aria-live="polite"></div></body></html>
+<div class="transition-curtain" aria-hidden="true"><span>NATIVO.</span></div><div class="toast" role="status" aria-live="polite"></div><nav class="mobile-dock" aria-label="Accesos rápidos NATIVO">
+<a href="#inicio" class="dock-link is-current" data-dock="inicio" aria-label="Ir a inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9H3zM9 20v-7h6v7"/></svg><span>Inicio</span></a>
+<a href="#producto" class="dock-link" data-dock="producto" aria-label="Ver creatina"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l2 4-1 14H6L5 7zM5 7h14M9 11h6M12 11v7"/></svg><span>Creatina</span></a>
+<a href="#historias" class="dock-link" data-dock="historias" aria-label="Ver historias"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M2 20v-2a6 6 0 0 1 12 0v2zM17 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 5 5v1"/></svg><span>Historias</span></a>
+<a href="#comunidad" class="dock-link" data-dock="comunidad" aria-label="Unirse a la comunidad"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H9l-5 4zM8 12h8"/></svg><span>Comunidad</span></a>
+</nav>
+</body></html>
