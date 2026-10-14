@@ -64,3 +64,11 @@ assets/
 - Cambia imágenes conservando nombres y rutas dentro de `assets/` o actualiza los `src` en `index.html`.
 
 Este proyecto fue preparado para su uso como **prototipo** de NATIVO.
+
+
+## Mejoras versión V4
+- Portada con imagen completa (object-fit: contain) y fondo cinematográfico difuminado que cubre los márgenes.
+- Composición de portada adaptada para celular: fotografía arriba, texto debajo.
+- Animación de apertura, progresión por capítulos, botones con reflejo y ripple, tarjetas 3D sutiles en computadoras, entradas con desenfoque y parallax suave.
+- Todas las animaciones respetan la preferencia de accesibilidad de movimiento reducido.
+- Subir TODO el contenido de esta carpeta a la raíz de GitHub. Borrar versiones antiguas de los tres archivos principales para evitar mezclas.

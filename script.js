@@ -49,3 +49,37 @@ $('#search-trigger').addEventListener('click',()=>{openLayer(search);updateSearc
 function updateSearch(query){const holder=$('#search-results');holder.replaceChildren();const matches=searchable.filter(item=>item.title.toLowerCase().includes(query.trim().toLowerCase()));matches.forEach(item=>{const row=document.createElement('div');row.className='search-result';row.textContent=item.title+' ↗';row.tabIndex=0;const activate=()=>{closeLayer();if(articles[item.id]){const a=articles[item.id];openInfo(a.k,a.title,a.paragraphs)}else{location.hash='#'+item.id}};row.addEventListener('click',activate);row.addEventListener('keydown',e=>{if(e.key==='Enter')activate()});holder.appendChild(row)});if(!matches.length)holder.innerHTML='<p class="search-result">No encontramos resultados con ese término.</p>'}
 // No backend is configured; be explicit about that
 $('#newsletter').addEventListener('submit',e=>{e.preventDefault();$('#newsletter-status').textContent='¡Gracias por tu interés! Este formulario es una demostración: aún no guarda correos. La suscripción se activará con el lanzamiento.';$('#newsletter').reset()});
+
+// V4: Cinematic scroll choreography, cards, hero focal point and feedback.
+(function(){
+const motionOK=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fancyPointer=window.matchMedia('(pointer:fine)').matches;
+const hero=document.querySelector('.hero');
+const picture=document.querySelector('.hero-photo');
+const sections=['inicio','producto','manifiesto','historias','aprende','comunidad'];
+const pips=[...document.querySelectorAll('[data-index]')];
+let nextFrame=0;
+function frame(){nextFrame=0;const y=window.scrollY;
+  const focus=y+window.innerHeight*.43;
+  let current=sections[0];
+  for(const id of sections){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top+window.scrollY<=focus)current=id}
+  pips.forEach(el=>{const on=el.dataset.index===current;el.classList.toggle('active',on);if(on)el.setAttribute('aria-current','location');else el.removeAttribute('aria-current')});
+  if(motionOK&&hero&&picture&&window.innerWidth>740){const r=hero.getBoundingClientRect();if(r.bottom>0&&r.top<window.innerHeight){const v=Math.max(0,Math.min(1,-r.top/r.height));picture.style.translate=`0 ${v*30}px`;hero.style.setProperty('--hero-scroll',v.toFixed(3));}}
+}
+function schedule(){if(!nextFrame)nextFrame=requestAnimationFrame(frame)}
+window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});frame();
+// Interactive cards are subtle on desktop and entirely disabled for touch users.
+if(fancyPointer&&motionOK){
+ document.querySelectorAll('.tilt-card').forEach(card=>{
+  card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(950px) rotateX(${-y*5}deg) rotateY(${x*5}deg) translateY(-5px)`});
+  card.addEventListener('pointerleave',()=>card.style.transform='');
+ });
+}
+// Button touch feedback; respects keyboard access and avoids cosmetic dependencies.
+document.querySelectorAll('.btn').forEach(btn=>btn.addEventListener('pointerdown',e=>{
+ if(!motionOK)return;const r=btn.getBoundingClientRect();const ripple=document.createElement('span');ripple.className='ripple';ripple.style.left=(e.clientX-r.left)+'px';ripple.style.top=(e.clientY-r.top)+'px';ripple.style.width=ripple.style.height=Math.max(r.width,r.height)+'px';btn.appendChild(ripple);ripple.addEventListener('animationend',()=>ripple.remove(),{once:true});
+}));
+const toast=document.querySelector('.toast');let timeout;
+function announce(s){if(!toast)return;toast.textContent=s;toast.classList.add('show');clearTimeout(timeout);timeout=setTimeout(()=>toast.classList.remove('show'),2600)}
+document.querySelectorAll('.add-to-cart').forEach(b=>b.addEventListener('click',()=>announce('Agregado a tu carrito de demostración')));
+})();
