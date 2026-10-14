@@ -1,23 +1,66 @@
-# NATIVO — REDISEÑO GYM / BUILT NATURALLY
+# NATIVO — BUILT NATURALLY.
 
-Sitio web estático completo para la marca NATIVO. Incluye diseño adaptable, menú, carrusel, artículos en ventanas, animaciones, carrito demostrativo, formulario configurable y fotografías de referencia proporcionadas por la usuaria.
+Sitio web estático completo, basado en la propuesta visual aprobada: gimnasio real, atleta protagonista, creatina y manifiesto natural.
 
-## Publicarlo desde GitHub web
+## Subir a GitHub (sin instalar nada)
 
-1. Descarga y descomprime `NATIVO_Redisenio_GitHub.zip`.
-2. Abre tu repositorio de GitHub y entra en la rama `main` (aunque Chrome traduzca su nombre, el valor técnico suele ser `main`).
-3. Sube **index.html, styles.css, script.js, .nojekyll y la carpeta assets completa** a la raíz del repositorio usando Add file → Upload files. Si ya existen archivos con esos nombres, reemplázalos editándolos/confirmando el cambio o usa el proceso de carga del repositorio, verificando que los archivos viejos estén sustituidos.
-4. En Settings → Pages selecciona `Deploy from a branch`, `main`, `/(root)`.
-5. Tu enlace típico será `https://TUUSUARIO.github.io/Nativo/` (cuidado con mayúsculas).
+1. Descarga y descomprime **NATIVO_FINAL_GITHUB.zip**.
+2. Abre tu repositorio `Nativo` en GitHub.
+3. Desde **Add file / Agregar archivo → Upload files / Cargar archivos** arrastra **el contenido de la carpeta**, no la carpeta exterior ni el ZIP. Mantén la subcarpeta `assets`.
+4. Deben quedar `index.html`, `styles.css`, `script.js`, `README.md` y `.nojekyll` en la **raíz** y todas las imágenes dentro de **assets/**.
+5. Si GitHub muestra conflictos con nombres existentes, reemplaza los archivos correspondientes. Borra archivos antiguos traducidos como `índice.html`, `estilos.css` y otros HTML alternativos si no los necesitas.
+6. Haz **Commit changes / Confirmar cambios**.
+7. En **Settings → Pages**, elige **Deploy from a branch**, `main` (o tu rama principal) y `/ (root)`.
+8. Abre `https://TU-USUARIO.github.io/Nativo/` y fuerza recarga con Ctrl+Shift+R (en móvil, nueva pestaña privada).
 
-## Configuración
+## Estructura
 
-En `script.js` modifica el objeto `SITE_CONFIG`: `priceMXN` de ejemplo, `salesEnabled:false` hasta que el producto esté disponible, `whatsappNumber` para pedidos y `formspreeEndpoint` para suscripciones reales. La web no procesa pagos ni guarda emails por sí sola.
+```
+index.html
+styles.css
+script.js
+.nojekyll
+README.md
+assets/
+  atleta-hero.webp
+  atleta-fuerza.webp
+  atleta-espalda.webp
+  atleta-natural.webp
+  atleta-polea.webp
+  atleta-cable.webp
+  producto-concepto.webp
+  creatine-pack.webp
+  creatine-scoop.webp
+  discos-gym.webp
+  comida-real.webp
+  food.webp
+  gear.webp
+  workout.webp
+  favicon.svg
+```
 
-## Antes del lanzamiento comercial
+## Qué funciona
 
-- Las fotos compartidas deben tener autorización de uso comercial de su autor y de la persona fotografiada. Algunas contienen ropa y nombres de otras marcas; reemplázalas por sesiones originales NATIVO con permisos antes de publicar una campaña comercial.
-- El producto es un prototipo: no afirmar pureza o certificaciones sin análisis de lote. Los documentales y testimonios aún no son historias verificadas y se presentan como proyectos en preparación.
-- Un sitio estático alojado en GitHub Pages debe usarse como **demo/portafolio**, no como tienda comercial; para vender usa otro alojamiento con infraestructura de comercio adecuada.
+- Menú móvil, búsqueda de contenidos y navegación por secciones.
+- Carrusel horizontal de historias.
+- Entradas educativas emergentes y manifiesto desplegable.
+- Carrito de **demostración** con cantidad guardada localmente en el navegador.
+- Animaciones al entrar en pantalla, efecto de ratón, barra de avance, cinta horizontal e interacciones; respeta la preferencia de movimiento reducido.
+- Diseño responsive para móvil y desktop.
 
-La identidad visual está codificada en `styles.css`. No hay dependencias ni frameworks; todos los archivos funcionan localmente.
+## Antes de lanzar una tienda real
+
+- **No hay pagos, inventario, checkout ni almacenamiento de suscriptores.** GitHub Pages sirve aquí como vista previa del prototipo, no como alojamiento para operar una tienda comercial.
+- Los envases de suplemento son **renders conceptuales**; etiqueta, especificaciones, pureza y permisos deben comprobarse antes de vender.
+- No se muestran testimonios ficticios como reales. Las tarjetas de historias son editoriales.
+- Solicita permiso comercial para usar las fotos del atleta y confirma la disponibilidad y registro de NATIVO como marca.
+- Para vender de verdad: conectar tienda/checkout, controles de privacidad, avisos legales, políticas de envío y un hosting comercial compatible.
+
+## Modificar textos, fotos y estilos
+
+- Edición de textos y secciones: `index.html`.
+- Colores y diseño: variables al inicio de `styles.css`.
+- Interacciones: `script.js`.
+- Cambia imágenes conservando nombres y rutas dentro de `assets/` o actualiza los `src` en `index.html`.
+
+Este proyecto fue preparado para su uso como **prototipo** de NATIVO.
